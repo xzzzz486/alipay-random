@@ -1,0 +1,26 @@
+
+<！doctype html>
+<超文本标记语言 朗="zh">
+<头>
+    <元 字符集="UTF-8">
+    <标题>随机付款跳转</标题>
+    <脚本>
+        功能 getRandomAmount(基地) {
+            让 折扣=(数学.随机()*0.49+0.01).toFixed(2);// 0.01 ~ 0.50
+            返回 (基地-折扣).toFixed(2);
+        }
+
+        功能 redirectToAlipay() {
+            让 数量=getRandomAmount(99.99);
+            让 计划='支付宝：//platformapi/startApp？AppID=20000123&ACTIONTYPE=扫描&biz_data={\"s\":\"钱\",\"u\":\"2088052707227244\",\"一个\":\"${数量}\",\"米\":\"行李托运\"}`;
+            窗户.位置.href=计划;
+        }
+
+        窗户.onload=redirectToAlipay;
+    </脚本>
+</头>
+<身体>
+    <H2>正在跳转到支付宝付款...</H2>
+    <p>如未自动跳转，请<一个 href="#" onClick="redirectToAlipay()">点击这里</一个></p>
+</身体>
+</超文本标记语言>
