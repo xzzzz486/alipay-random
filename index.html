@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>随机付款跳转</title>
+    <script>
+        function getRandomAmount(base) {
+            let discount = (Math.random() * 0.49 + 0.01).toFixed(2);
+            return (base - discount).toFixed(2);
+        }
+
+        function redirectToAlipay() {
+            let amount = getRandomAmount(99.99);
+            let scheme = `alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\":\"money\",\"u\":\"2088052707227244\",\"a\":\"${amount}\",\"m\":\"行李托运\"}`;
+            window.location.href = scheme;
+        }
+
+        window.onload = redirectToAlipay;
+    </script>
+</head>
+<body>
+    <h2>正在跳转到支付宝付款...</h2>
+    <p>如未自动跳转，请<a href="#" onclick="redirectToAlipay()">点击这里</a></p>
+</body>
+</html>
